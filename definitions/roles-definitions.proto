@@ -1,0 +1,16 @@
+syntax = "proto3";
+package definitions;
+
+
+message AuthorizationResponse{
+    bool isAuthorized = 1;
+}
+
+message AuthorizationParams{
+    int32 PermissionID = 1;
+    string ResourceName = 2;
+}
+
+service AuthorizationService{
+    rpc CanUser(AuthorizationParams) returns (AuthorizationResponse){}
+}

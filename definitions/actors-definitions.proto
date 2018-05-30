@@ -1,0 +1,58 @@
+syntax = "proto3";
+package  definitions;
+
+message User {
+    int32 ID = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    string Email = 4;
+    string Password = 5;
+}
+message GeneralResponse{
+    int32 Status = 1;
+    string Message = 2;
+}
+message GetAllUsersResponse{
+    int32 Status = 1;
+    string Message = 2;
+    repeated User users  = 3;
+}
+message Empty{
+
+}
+
+message CreateUserRequest{
+    string FirstName = 1;
+    string LastName = 2;
+    string Email = 3;
+    string Password = 4;
+    int32 RoleID = 5;
+}
+
+message EditUserRequest{
+    int32 ID = 1;
+    string FirstName = 2;
+    string LastName = 3;
+    string Email = 4;
+    string Password = 5;
+    int32 RoleID = 6;
+}
+
+message DeleteUserRequest{
+    int32 UserID = 1;
+}
+
+message AuthenticationParams{
+    string email = 1;
+    string password = 2;
+}
+service ActorsService{
+    rpc GetAllUsers (Empty) returns (GetAllUsersResponse){}
+    rpc CreateUser (CreateUserRequest) returns (GeneralResponse){}
+    rpc EditUser (EditUserRequest) returns(GeneralResponse){}
+    rpc DeleteUser (DeleteUserRequest) returns (GeneralResponse){}
+
+    rpc Authenticate(AuthenticationParams) returns (GeneralResponse){}
+
+
+}
