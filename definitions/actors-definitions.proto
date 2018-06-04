@@ -53,7 +53,6 @@ message LoginParams{
 
 message LoginResponse{
     bool isValid = 1;
-    User user = 2;
 }
 service ActorsService{
     rpc GetAllUsers (Empty) returns (GetAllUsersResponse){}
