@@ -23,6 +23,114 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+type Resource struct {
+	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Path                 string   `protobuf:"bytes,3,opt,name=path" json:"path,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Resource) Reset()         { *m = Resource{} }
+func (m *Resource) String() string { return proto.CompactTextString(m) }
+func (*Resource) ProtoMessage()    {}
+func (*Resource) Descriptor() ([]byte, []int) {
+	return fileDescriptor_resources_definitions_fc66cc1429970104, []int{0}
+}
+func (m *Resource) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Resource.Unmarshal(m, b)
+}
+func (m *Resource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Resource.Marshal(b, m, deterministic)
+}
+func (dst *Resource) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Resource.Merge(dst, src)
+}
+func (m *Resource) XXX_Size() int {
+	return xxx_messageInfo_Resource.Size(m)
+}
+func (m *Resource) XXX_DiscardUnknown() {
+	xxx_messageInfo_Resource.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Resource proto.InternalMessageInfo
+
+func (m *Resource) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *Resource) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Resource) GetPath() string {
+	if m != nil {
+		return m.Path
+	}
+	return ""
+}
+
+type ResourcesResponse struct {
+	Resources            []*Resource `protobuf:"bytes,1,rep,name=resources" json:"resources,omitempty"`
+	Status               int32       `protobuf:"varint,2,opt,name=Status" json:"Status,omitempty"`
+	Message              string      `protobuf:"bytes,3,opt,name=Message" json:"Message,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
+}
+
+func (m *ResourcesResponse) Reset()         { *m = ResourcesResponse{} }
+func (m *ResourcesResponse) String() string { return proto.CompactTextString(m) }
+func (*ResourcesResponse) ProtoMessage()    {}
+func (*ResourcesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_resources_definitions_fc66cc1429970104, []int{1}
+}
+func (m *ResourcesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ResourcesResponse.Unmarshal(m, b)
+}
+func (m *ResourcesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ResourcesResponse.Marshal(b, m, deterministic)
+}
+func (dst *ResourcesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResourcesResponse.Merge(dst, src)
+}
+func (m *ResourcesResponse) XXX_Size() int {
+	return xxx_messageInfo_ResourcesResponse.Size(m)
+}
+func (m *ResourcesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResourcesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResourcesResponse proto.InternalMessageInfo
+
+func (m *ResourcesResponse) GetResources() []*Resource {
+	if m != nil {
+		return m.Resources
+	}
+	return nil
+}
+
+func (m *ResourcesResponse) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+func (m *ResourcesResponse) GetMessage() string {
+	if m != nil {
+		return m.Message
+	}
+	return ""
+}
+
 type CreateResourceParams struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
 	Path                 string   `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
@@ -35,7 +143,7 @@ func (m *CreateResourceParams) Reset()         { *m = CreateResourceParams{} }
 func (m *CreateResourceParams) String() string { return proto.CompactTextString(m) }
 func (*CreateResourceParams) ProtoMessage()    {}
 func (*CreateResourceParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_definitions_fee3dc46cae993e1, []int{0}
+	return fileDescriptor_resources_definitions_fc66cc1429970104, []int{2}
 }
 func (m *CreateResourceParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateResourceParams.Unmarshal(m, b)
@@ -82,7 +190,7 @@ func (m *EditResourceParams) Reset()         { *m = EditResourceParams{} }
 func (m *EditResourceParams) String() string { return proto.CompactTextString(m) }
 func (*EditResourceParams) ProtoMessage()    {}
 func (*EditResourceParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_definitions_fee3dc46cae993e1, []int{1}
+	return fileDescriptor_resources_definitions_fc66cc1429970104, []int{3}
 }
 func (m *EditResourceParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_EditResourceParams.Unmarshal(m, b)
@@ -134,7 +242,7 @@ func (m *DeleteResourceParams) Reset()         { *m = DeleteResourceParams{} }
 func (m *DeleteResourceParams) String() string { return proto.CompactTextString(m) }
 func (*DeleteResourceParams) ProtoMessage()    {}
 func (*DeleteResourceParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_resources_definitions_fee3dc46cae993e1, []int{2}
+	return fileDescriptor_resources_definitions_fc66cc1429970104, []int{4}
 }
 func (m *DeleteResourceParams) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteResourceParams.Unmarshal(m, b)
@@ -162,6 +270,8 @@ func (m *DeleteResourceParams) GetResourceId() int32 {
 }
 
 func init() {
+	proto.RegisterType((*Resource)(nil), "definitions.Resource")
+	proto.RegisterType((*ResourcesResponse)(nil), "definitions.ResourcesResponse")
 	proto.RegisterType((*CreateResourceParams)(nil), "definitions.CreateResourceParams")
 	proto.RegisterType((*EditResourceParams)(nil), "definitions.EditResourceParams")
 	proto.RegisterType((*DeleteResourceParams)(nil), "definitions.DeleteResourceParams")
@@ -178,7 +288,7 @@ const _ = grpc.SupportPackageIsVersion4
 // Client API for Resources service
 
 type ResourcesClient interface {
-	GetResources(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GeneralResponse, error)
+	GetResources(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ResourcesResponse, error)
 	AddResource(ctx context.Context, in *CreateResourceParams, opts ...grpc.CallOption) (*GeneralResponse, error)
 	EditResource(ctx context.Context, in *EditResourceParams, opts ...grpc.CallOption) (*GeneralResponse, error)
 	DeleteResource(ctx context.Context, in *DeleteResourceParams, opts ...grpc.CallOption) (*GeneralResponse, error)
@@ -192,8 +302,8 @@ func NewResourcesClient(cc *grpc.ClientConn) ResourcesClient {
 	return &resourcesClient{cc}
 }
 
-func (c *resourcesClient) GetResources(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GeneralResponse, error) {
-	out := new(GeneralResponse)
+func (c *resourcesClient) GetResources(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ResourcesResponse, error) {
+	out := new(ResourcesResponse)
 	err := grpc.Invoke(ctx, "/definitions.Resources/GetResources", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -231,7 +341,7 @@ func (c *resourcesClient) DeleteResource(ctx context.Context, in *DeleteResource
 // Server API for Resources service
 
 type ResourcesServer interface {
-	GetResources(context.Context, *Empty) (*GeneralResponse, error)
+	GetResources(context.Context, *Empty) (*ResourcesResponse, error)
 	AddResource(context.Context, *CreateResourceParams) (*GeneralResponse, error)
 	EditResource(context.Context, *EditResourceParams) (*GeneralResponse, error)
 	DeleteResource(context.Context, *DeleteResourceParams) (*GeneralResponse, error)
@@ -339,26 +449,30 @@ var _Resources_serviceDesc = grpc.ServiceDesc{
 }
 
 func init() {
-	proto.RegisterFile("resources-definitions.proto", fileDescriptor_resources_definitions_fee3dc46cae993e1)
+	proto.RegisterFile("resources-definitions.proto", fileDescriptor_resources_definitions_fc66cc1429970104)
 }
 
-var fileDescriptor_resources_definitions_fee3dc46cae993e1 = []byte{
-	// 261 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x92, 0x4d, 0x4b, 0x03, 0x31,
-	0x10, 0x86, 0xed, 0xfa, 0x01, 0x9d, 0x5d, 0x3c, 0x0c, 0x3d, 0x94, 0x2a, 0x54, 0xf7, 0xe4, 0xc5,
-	0x1e, 0xf4, 0xe0, 0x4d, 0xf0, 0xa3, 0x14, 0x4f, 0x96, 0xf5, 0x2c, 0x12, 0xcd, 0x48, 0x03, 0xdd,
-	0x64, 0xc9, 0xc4, 0x83, 0xbf, 0xd0, 0xbf, 0x25, 0xdd, 0x1a, 0x9b, 0xb4, 0x0b, 0xb9, 0xcd, 0xbe,
-	0x9b, 0x79, 0xf2, 0xf2, 0x10, 0x38, 0xb1, 0xc4, 0xe6, 0xcb, 0x7e, 0x10, 0x5f, 0x4a, 0xfa, 0x54,
-	0x5a, 0x39, 0x65, 0x34, 0x4f, 0x1a, 0x6b, 0x9c, 0xc1, 0x3c, 0x88, 0x46, 0x05, 0x2f, 0x84, 0x25,
-	0xb9, 0xfe, 0x55, 0xde, 0xc2, 0xe0, 0xc1, 0x92, 0x70, 0x54, 0xfd, 0xed, 0xcf, 0x85, 0x15, 0x35,
-	0x23, 0xc2, 0x81, 0x16, 0x35, 0x0d, 0x7b, 0x67, 0xbd, 0x8b, 0x7e, 0xd5, 0xce, 0xab, 0xac, 0x11,
-	0x6e, 0x31, 0xcc, 0xd6, 0xd9, 0x6a, 0x2e, 0x5f, 0x01, 0xa7, 0x52, 0xb9, 0xad, 0xed, 0x31, 0xe4,
-	0xbe, 0xcf, 0x9b, 0x92, 0x2d, 0xe4, 0xb0, 0x02, 0x1f, 0x3d, 0xc9, 0x7f, 0x7c, 0xd6, 0x81, 0xdf,
-	0x0f, 0xf0, 0x37, 0x30, 0x78, 0xa4, 0x25, 0xed, 0xd4, 0x4b, 0x5d, 0x70, 0xf5, 0x93, 0x41, 0xdf,
-	0xef, 0x30, 0xde, 0x43, 0x31, 0x23, 0xb7, 0xf9, 0xc6, 0x49, 0x28, 0x69, 0x5a, 0x37, 0xee, 0x7b,
-	0x74, 0x1a, 0x65, 0x33, 0xd2, 0x64, 0xc5, 0xb2, 0x22, 0x6e, 0x8c, 0x66, 0x2a, 0xf7, 0x70, 0x0e,
-	0xf9, 0x9d, 0x94, 0x9e, 0x81, 0xe7, 0xd1, 0xf1, 0x2e, 0x87, 0x49, 0xe2, 0x33, 0x14, 0xa1, 0x3b,
-	0x1c, 0xc7, 0xad, 0x76, 0xb4, 0x26, 0x81, 0x2f, 0x70, 0x1c, 0xdb, 0xda, 0x6a, 0xd9, 0xa5, 0x32,
-	0x05, 0x7d, 0x3f, 0x6a, 0x1f, 0xca, 0xf5, 0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0xe3, 0x88, 0xbe,
-	0x5d, 0x62, 0x02, 0x00, 0x00,
+var fileDescriptor_resources_definitions_fc66cc1429970104 = []byte{
+	// 333 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x92, 0x4f, 0x4f, 0xf2, 0x40,
+	0x10, 0x87, 0xdf, 0x96, 0x17, 0x94, 0x29, 0x21, 0x71, 0x82, 0xa6, 0x41, 0x23, 0xd8, 0x13, 0x17,
+	0x39, 0xc0, 0xc1, 0x9b, 0x89, 0x0a, 0x21, 0x1e, 0x8c, 0x64, 0x39, 0x1b, 0xb3, 0xba, 0xa3, 0x6c,
+	0x02, 0x6d, 0xb3, 0xbb, 0x1c, 0xf4, 0x1b, 0xfa, 0xad, 0x0c, 0x7f, 0x76, 0x69, 0xa1, 0x09, 0xde,
+	0x76, 0xa6, 0x3b, 0xbf, 0x79, 0xf2, 0x6c, 0xe1, 0x5c, 0x91, 0x4e, 0x16, 0xea, 0x9d, 0xf4, 0xb5,
+	0xa0, 0x0f, 0x19, 0x4b, 0x23, 0x93, 0x58, 0x77, 0x53, 0x95, 0x98, 0x04, 0x83, 0x4c, 0xab, 0x59,
+	0xd3, 0x53, 0xae, 0x48, 0xac, 0x3f, 0x45, 0xf7, 0x70, 0xcc, 0x36, 0x93, 0x58, 0x07, 0x5f, 0x8a,
+	0xd0, 0x6b, 0x7b, 0x9d, 0x32, 0xf3, 0xa5, 0x40, 0x84, 0xff, 0x31, 0x9f, 0x53, 0xe8, 0xb7, 0xbd,
+	0x4e, 0x95, 0xad, 0xce, 0xcb, 0x5e, 0xca, 0xcd, 0x34, 0x2c, 0xad, 0x7b, 0xcb, 0x73, 0xf4, 0x0d,
+	0x27, 0x36, 0x43, 0x33, 0xd2, 0x69, 0x12, 0x6b, 0xc2, 0x3e, 0x54, 0x1d, 0x52, 0xe8, 0xb5, 0x4b,
+	0x9d, 0xa0, 0x77, 0xda, 0xcd, 0xa2, 0xd9, 0x11, 0xb6, 0xbd, 0x87, 0x67, 0x50, 0x99, 0x18, 0x6e,
+	0x16, 0x7a, 0xb5, 0xb3, 0xcc, 0x36, 0x15, 0x86, 0x70, 0xf4, 0x44, 0x5a, 0xf3, 0x4f, 0xda, 0x2c,
+	0xb6, 0x65, 0x74, 0x0b, 0x8d, 0x07, 0x45, 0xdc, 0x90, 0x8d, 0x1b, 0x73, 0xc5, 0xe7, 0xda, 0xb1,
+	0x7b, 0x05, 0xec, 0x7e, 0x86, 0xfd, 0x05, 0x70, 0x28, 0xa4, 0xd9, 0x99, 0x6e, 0x41, 0x60, 0xa1,
+	0x5e, 0x9d, 0x12, 0xb0, 0xad, 0xc7, 0xbf, 0xab, 0xb9, 0x81, 0xc6, 0x80, 0x66, 0xb4, 0x87, 0x77,
+	0x68, 0x41, 0xef, 0xc7, 0x87, 0xaa, 0x93, 0x8a, 0x03, 0xa8, 0x8d, 0xc8, 0x6c, 0x6b, 0xcc, 0x99,
+	0x1c, 0xce, 0x53, 0xf3, 0xd5, 0xbc, 0x2c, 0xb4, 0xeb, 0x1e, 0x24, 0xfa, 0x87, 0x63, 0x08, 0xee,
+	0x84, 0x70, 0xcf, 0x7d, 0x95, 0x1b, 0x28, 0xb2, 0xd8, 0xbc, 0xc8, 0x5d, 0x19, 0x51, 0x4c, 0x8a,
+	0xcf, 0x32, 0x89, 0xcf, 0x50, 0xcb, 0xda, 0xc3, 0x56, 0x9e, 0x6b, 0x4f, 0xec, 0xc1, 0xc0, 0x09,
+	0xd4, 0xf3, 0xbe, 0x76, 0x28, 0x8b, 0x64, 0x1e, 0x0a, 0x7d, 0xab, 0xac, 0x7e, 0xf5, 0xfe, 0x6f,
+	0x00, 0x00, 0x00, 0xff, 0xff, 0x5f, 0x90, 0xae, 0x7c, 0x24, 0x03, 0x00, 0x00,
 }

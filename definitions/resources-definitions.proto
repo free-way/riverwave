@@ -2,7 +2,16 @@ syntax = "proto3";
 package  definitions;
 import "shared.proto";
 
-
+message Resource{
+    int32 id = 1;
+    string name = 2;
+    string path = 3;
+}
+message ResourcesResponse{
+    repeated Resource resources = 1;
+    int32 Status = 2;
+    string Message = 3;
+}
 message CreateResourceParams{
     string name = 1;
     string path = 2;
@@ -19,7 +28,7 @@ message DeleteResourceParams{
 }
 
 service Resources{
-    rpc GetResources(Empty) returns (GeneralResponse){}
+    rpc GetResources(Empty) returns (ResourcesResponse){}
     rpc AddResource(CreateResourceParams) returns (GeneralResponse){}
     rpc EditResource(EditResourceParams) returns (GeneralResponse){}
     rpc DeleteResource(DeleteResourceParams) returns (GeneralResponse) {}
