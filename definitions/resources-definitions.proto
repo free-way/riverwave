@@ -1,0 +1,26 @@
+syntax = "proto3";
+package  definitions;
+import "shared.proto";
+
+
+message CreateResourceParams{
+    string name = 1;
+    string path = 2;
+}
+
+message EditResourceParams{
+    int32 resource_id = 1;
+    string name = 2;
+    string path = 3;
+}
+
+message DeleteResourceParams{
+    int32 resource_id = 1;
+}
+
+service Resources{
+    rpc GetResources(Empty) returns (GeneralResponse){}
+    rpc AddResource(CreateResourceParams) returns (GeneralResponse){}
+    rpc EditResource(EditResourceParams) returns (GeneralResponse){}
+    rpc DeleteResource(DeleteResourceParams) returns (GeneralResponse) {}
+}

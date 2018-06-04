@@ -1,0 +1,12 @@
+syntax = "proto3";
+package definitions;
+
+
+message GeneralResponse{
+    int32 Status = 1;
+    string Message = 2;
+}
+
+message Empty{
+
+}

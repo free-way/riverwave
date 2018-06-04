@@ -1,6 +1,8 @@
 syntax = "proto3";
 package  definitions;
 
+import "shared.proto";
+
 message User {
     int32 ID = 1;
     string FirstName = 2;
@@ -8,18 +10,13 @@ message User {
     string Email = 4;
     string Password = 5;
 }
-message GeneralResponse{
-    int32 Status = 1;
-    string Message = 2;
-}
+
 message GetAllUsersResponse{
     int32 Status = 1;
     string Message = 2;
     repeated User users  = 3;
 }
-message Empty{
 
-}
 
 message CreateUserRequest{
     string FirstName = 1;
