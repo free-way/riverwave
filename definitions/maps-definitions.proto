@@ -48,9 +48,13 @@ message GetFlagsRequest{
     int64 MapId = 1;
 }
 
+message GetMapsRequest{
+    int64 EventId = 1;
+}
+
 service Maps{
     rpc CreateMap(Map) returns (GeneralResponse){}
-    rpc GetMaps(Empty) returns (MapsResponse){}
+    rpc GetMaps(GetMapsRequest) returns (MapsResponse){}
     rpc EditMap(Map) returns (GeneralResponse){}
     rpc DeleteMap(Map) returns (GeneralResponse){}
 
