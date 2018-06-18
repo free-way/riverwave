@@ -1,0 +1,60 @@
+syntax = "proto3";
+package definitions;
+import "shared.proto";
+
+
+message Map{
+    int64 Id = 1;
+    string AreaName = 2;
+    string AreaCoordinates = 3;
+    repeated Flag Flags = 4;
+    int64 EventId = 5;
+}
+
+message Flag{
+    int64 Id = 1;
+    string Name = 2;
+    string Coordinates = 3;
+}
+
+message FlagsResponse{
+    repeated Flag Flags = 1;
+}
+
+message MapsResponse{
+    int64 Status = 1;
+    string Message =2;
+    repeated Map Maps =3;
+}
+
+message MapResponse{
+    int64 Status = 1;
+    string Message =2;
+    Map Map = 3;
+}
+
+message AddFlagRequest{
+ int64 MapId = 1;
+ string Name = 2;
+ string Coordinates = 3;
+}
+
+message DeleteFlagRequest{
+    int64 MapId = 1;
+    int64 FlagId = 2;
+}
+
+message GetFlagsRequest{
+    int64 MapId = 1;
+}
+
+service Maps{
+    rpc CreateMap(Map) returns (GeneralResponse){}
+    rpc GetMaps(Empty) returns (MapsResponse){}
+    rpc EditMap(Map) returns (GeneralResponse){}
+    rpc DeleteMap(Map) returns (GeneralResponse){}
+
+    rpc AddFlag(AddFlagRequest) returns (GeneralResponse){}
+    rpc DeleteFlag(DeleteFlagRequest) returns (GeneralResponse){}
+    rpc GetFlags(GetFlagsRequest) returns (FlagsResponse){}
+}
